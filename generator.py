@@ -13,8 +13,10 @@ args = parser.parse_args()
 fake = Faker()
 
 producer = KafkaProducer(bootstrap_servers=[f"{args.kafka}:9092"],
-                         value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+                         value_serializer=lambda x: json.dumps(x).encode('utf-8'),
+                         api_version=(2, 6, 0))
 
+print("Producer started")
 
 try:
     while True:
