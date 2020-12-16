@@ -20,7 +20,7 @@ print("Producer started")
 
 try:
     while True:
-        message = {"time": str(datetime.now()), "age": random.randint(0, 100), 
+        message = {"time": str(datetime.utcnow().timestamp()), "age": random.randint(0, 100), 
                    "name": fake.name(), "address": fake.address(), "zipcode": fake.zipcode(),
                    "action": random.choice("abcdef")}
         producer.send("data", value=message)
